@@ -33,6 +33,29 @@ data "aws_iam_policy_document" "main" {
     effect = "Allow"
 
     actions = [
+      "ssmmessages:CreateControlChannel",
+      "ssmmessages:CreateDataChannel",
+      "ssmmessages:OpenControlChannel",
+      "ssmmessages:OpenDataChannel",
+    ]
+
+    resources = ["*"]
+  }
+
+  statement {
+    effect = "Allow"
+
+    actions = [
+      "s3:GetEncryptionConfiguration",
+    ]
+
+    resources = ["*"]
+  }
+
+  statement {
+    effect = "Allow"
+
+    actions = [
       "ec2messages:AcknowledgeMessage",
       "ec2messages:DeleteMessage",
       "ec2messages:FailMessage",
