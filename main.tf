@@ -3,8 +3,8 @@
 # -------------------------------------------------------------------------------
 resource "aws_iam_role_policy" "main" {
   name   = "${var.name_prefix}-ssm-agent-policy"
-  role   = "${var.role}"
-  policy = "${data.aws_iam_policy_document.main.json}"
+  role   = var.role
+  policy = data.aws_iam_policy_document.main.json
 }
 
 data "aws_iam_policy_document" "main" {
@@ -79,10 +79,10 @@ data "aws_iam_policy_document" "main" {
 }
 
 resource "aws_iam_role_policy" "output" {
-  count  = "${var.output_bucket == "" ? 0 : 1}"
+  count  = var.output_bucket == "" ? 0 : 1
   name   = "${var.name_prefix}-ssm-agent-output-policy"
-  role   = "${var.role}"
-  policy = "${data.aws_iam_policy_document.output.json}"
+  role   = var.role
+  policy = data.aws_iam_policy_document.output.json
 }
 
 data "aws_iam_policy_document" "output" {
@@ -104,3 +104,4 @@ data "aws_iam_policy_document" "output" {
     ]
   }
 }
+
