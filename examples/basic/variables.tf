@@ -1,6 +1,6 @@
 variable "name_prefix" {
   type    = string
-  default = "concourse-basic-example"
+  default = "ssm-agent-policy-basic-example"
 }
 
 variable "region" {
