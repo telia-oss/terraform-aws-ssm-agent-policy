@@ -1,10 +1,9 @@
 terraform {
-  required_version = ">= 0.12"
+  required_version = ">= 0.14"
 }
 
 provider "aws" {
-  version = ">= 2.17"
-  region  = var.region
+  region = var.region
 }
 
 data "aws_vpc" "main" {
@@ -42,7 +41,7 @@ data "aws_ami" "linux2" {
 
 module "asg" {
   source  = "telia-oss/asg/aws"
-  version = "3.0.1"
+  version = "3.3.1"
 
   name_prefix  = var.name_prefix
   vpc_id       = data.aws_vpc.main.id
